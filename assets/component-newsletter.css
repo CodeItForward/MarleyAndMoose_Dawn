@@ -52,12 +52,12 @@
 }
 
 .newsletter-form__button:focus-visible {
-  box-shadow: 0 0 0 .3rem rgb(var(--color-background)),0 0 0 .4rem rgba(var(--color-foreground));
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.4rem rgba(var(--color-foreground));
   background-color: rgb(var(--color-background));
 }
 
 .newsletter-form__button:focus {
-  box-shadow: 0 0 0 .3rem rgb(var(--color-background)),0 0 0 .4rem rgba(var(--color-foreground));
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.4rem rgba(var(--color-foreground));
   background-color: rgb(var(--color-background));
 }
 
@@ -68,12 +68,4 @@
 
 .newsletter-form__button .icon {
   width: 1.5rem;
-}
-
-.newsletter-form__button.field__button {
-  width: 5.4rem;
-}
-
-.newsletter-form__button.field__button span {
-  margin-right: 3px;
 }
