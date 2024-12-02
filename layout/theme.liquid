@@ -35,6 +35,10 @@
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 
+    {% unless template contains 'cart' %}
+    {{ 'prefetch.js' | asset_url | script_tag }}
+    {% endunless %}
+
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -372,5 +376,6 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    {{ 'footer.js' | asset_url | script_tag | replace: 'src', 'defer src' }}
   </body>
 </html>
