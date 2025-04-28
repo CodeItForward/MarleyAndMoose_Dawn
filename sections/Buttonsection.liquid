@@ -1,0 +1,246 @@
+
+{% schema %}
+{
+  "name": "Custom Image Buttons",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Add Clickable Image Buttons"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Explore Our Pages"
+    },
+    {
+      "type": "paragraph",
+      "content": "Customize up to six clickable image buttons with descriptive text."
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_1",
+      "label": "Button 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Button 1 Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_2",
+      "label": "Button 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button 2 Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_3",
+      "label": "Button 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_3",
+      "label": "Button 3 Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link_3",
+      "label": "Button 3 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_4",
+      "label": "Button 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_4",
+      "label": "Button 4 Text",
+      "default": "About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link_4",
+      "label": "Button 4 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_5",
+      "label": "Button 5 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_5",
+      "label": "Button 5 Text",
+      "default": "Blog"
+    },
+    {
+      "type": "url",
+      "id": "button_link_5",
+      "label": "Button 5 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_image_6",
+      "label": "Button 6 Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text_6",
+      "label": "Button 6 Text",
+      "default": "Gallery"
+    },
+    {
+      "type": "url",
+      "id": "button_link_6",
+      "label": "Button 6 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Buttons",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-image-buttons-section">
+  <h2>{{ section.settings.section_heading }}</h2>
+  <div class="buttons">
+    {% if section.settings.button_link_1 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_1 }}" class="image-button">
+          {% if section.settings.button_image_1 %}
+            <img src="{{ section.settings.button_image_1 | img_url: 'medium' }}" alt="{{ section.settings.button_text_1 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_1 }}</p>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.button_link_2 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_2 }}" class="image-button">
+          {% if section.settings.button_image_2 %}
+            <img src="{{ section.settings.button_image_2 | img_url: 'medium' }}" alt="{{ section.settings.button_text_2 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_2 }}</p>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.button_link_3 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_3 }}" class="image-button">
+          {% if section.settings.button_image_3 %}
+            <img src="{{ section.settings.button_image_3 | img_url: 'medium' }}" alt="{{ section.settings.button_text_3 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_3 }}</p>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.button_link_4 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_4 }}" class="image-button">
+          {% if section.settings.button_image_4 %}
+            <img src="{{ section.settings.button_image_4 | img_url: 'medium' }}" alt="{{ section.settings.button_text_4 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_4 }}</p>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.button_link_5 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_5 }}" class="image-button">
+          {% if section.settings.button_image_5 %}
+            <img src="{{ section.settings.button_image_5 | img_url: 'medium' }}" alt="{{ section.settings.button_text_5 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_5 }}</p>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.button_link_6 %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link_6 }}" class="image-button">
+          {% if section.settings.button_image_6 %}
+            <img src="{{ section.settings.button_image_6 | img_url: 'medium' }}" alt="{{ section.settings.button_text_6 }}">
+          {% endif %}
+          <p>{{ section.settings.button_text_6 }}</p>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.custom-image-buttons-section {
+  text-align: center;
+  padding: 10px;
+}
+
+.custom-image-buttons-section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 3px;
+  padding-bottom: 25px;
+  background-color: #;
+}
+
+.custom-image-buttons-section .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.custom-image-buttons-section .button-wrapper {
+  text-align: center;
+  width: 200px;
+}
+
+.custom-image-buttons-section .image-button {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+
+.custom-image-buttons-section .image-button img {
+  width: 165px; /* Set a fixed width */
+  height: 165px; /* Set a fixed height */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image fits within the circle */
+  transition: transform 0.3s ease;
+}
+
+.custom-image-buttons-section .image-button p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.custom-image-buttons-section .image-button:hover img {
+  transform: scale(1.05);
+}
+</style>
+

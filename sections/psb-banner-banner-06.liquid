@@ -1,0 +1,429 @@
+{%- comment -%}
+  {
+    "name": "Banner 06",
+    "author": "PusherCommerce"
+    "description": "Please DO NOT copy in any form. Any act of copying will be sued and held responsible with the law",
+    "Semiwrite": "Yes",
+    "App": "S"
+  }
+{%- endcomment -%}
+{%- liquid
+  assign color1 = section.settings.wave_color_1 | remove: '#'
+  assign color2 = section.settings.wave_color_2 | remove: '#'
+-%}
+
+{%- capture minify -%}
+  <style>
+    #psb-{{ section.id }} {
+      position: relative;
+      padding-top: {{section.settings.section_padding_top}}px;
+      padding-bottom: {{section.settings.section_padding_bottom}}px;
+      background-color: {{section.settings.section_bg_color}};
+    }
+
+    #psb-{{ section.id }}:after {
+      background-image: url("data:image/svg+xml; utf8,<svg viewBox='0 0 1512 157' xmlns='http://www.w3.org/2000/svg'><path d='M716 88.9999C408.8 7.39994 109.333 65.6666 -2 105H-56L-32 1H1544V88.9999C1352 165 1100 191 716 88.9999Z' fill='%23{{color1}}' stroke='%23{{color1}}'/><path d='M 716 82 C 408.8 0.4 109.333 58.667 -2 98 L -56 98 L -32 -6 L 1544 -6 L 1544 82 C 1352 158 1100 184 716 82 Z' fill='%23{{color2}}' stroke='%23{{color2}}'/></svg>");
+      background-color: {{section.settings.wave_color_3}};
+      content: "";
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center bottom;
+    }
+    #psb-{{ section.id }} .title{
+      color: {{ section.settings.color_text }};
+      margin-top: 0px;
+      margin-bottom: 16px;
+    }
+    #psb-{{ section.id }} .desc{
+      color: {{ section.settings.color_desc }};
+      margin-bottom: 30px;
+    }
+    #psb-{{ section.id }} .psb-b-bold{
+      color: {{ section.settings.color_subdesc }};
+    }
+
+    #psb-{{ section.id }} .psb-btn-banner.psb-btn-banner-outline{
+      text-decoration: none;
+      font-weight: 600;
+      color: {{ section.settings.button-text }};
+      box-shadow: 5px 5px 0px 0px {{ section.settings.button-text }};
+      border:1px solid {{ section.settings.button-text }};
+    }
+    #psb-{{ section.id }} .psb-btn-banner.psb-btn-banner-outline:hover{
+      box-shadow: -5px -5px 0px 0px {{ section.settings.button-text }};
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    #psb-{{ section.id }} .banner-curves > img {
+      max-width: 100%;
+      width: 100%;
+      display: block;
+    }
+
+    #psb-{{ section.id }} .global-media-settings {
+      background-color: transparent;
+      border: none;
+    }
+    #psb-{{ section.id }} .banner__media {
+      position: relative;
+      z-index: 1;
+    }
+
+    #psb-{{ section.id }} .psb-btn-banner.psb-btn-banner-outline{
+      background-color: {{ section.settings.button_background }};
+    }
+
+    #psb-{{ section.id }} .banner-flex {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap-reverse;
+    }
+    #psb-{{ section.id }} .banner-flex .psb-b-button {
+      margin-right: 28px;
+    }
+
+    #psb-{{ section.id }} .banner-flex .psb-btn {
+      padding: 1rem 2.5rem;
+    }
+
+    #psb-{{ section.id }} .banner-flex .psb-b-button,
+    #psb-{{ section.id }} .banner-flex .psb-b-bold {
+      margin-bottom: 20px;
+    }
+
+
+    @media only screen and (max-width:767px){
+      #psb-{{ section.id }} {
+        padding-top: {{section.settings.section_padding_top_mobile}}px;
+        padding-bottom: {{section.settings.section_padding_bottom_mobile}}px;
+      }
+      #psb-{{ section.id }} .psb-banner-content {
+        margin-bottom: 60px;
+        padding: 0px 30px;
+      }
+
+      #psb-{{ section.id }}::after {
+        background-position: 70% 50%;
+      }
+      #psb-{{ section.id }} .banner__media .media--adapt.media {
+        padding-bottom: 461px !important;
+      }
+      #psb-{{ section.id }} .banner__media img {
+        object-fit: contain;
+      }
+      #psb-{{ section.id }} .banner-flex {
+        align-items: self-start;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+      }
+      #psb-{{ section.id }} .desc {
+        margin-bottom: 20px;
+      }
+      #psb-{{ section.id }} .psb-b-bold {
+        margin-bottom: 20px;
+      }
+    }
+    @media only screen and (max-width:479px){
+      #psb-{{ section.id }} .psb-banner-content {
+        padding: 0px 0px 0px 0px;
+      }
+    }
+  </style>
+{%- endcapture -%}
+{{ minify | strip_newlines }}
+
+<div id="psb-{{ section.id }}" class="psb-{{ section.id }} psb-section psb-banner-banner-06" style="display: none;">
+  <div class="{{ section.settings.container_width }}">
+    <div class="psb-row">
+      <div class="psb-col-md-6 psb-d-flex psb-justify-content-center psb-align-items-center">
+        <div class="psb-banner-content">
+          <{{ section.settings.heading_tag }} class="title">{{ section.settings.title }}</{{ section.settings.heading_tag }}>
+          <div class="desc">{{ section.settings.desc }}</div>
+          <div class="banner-flex">
+            <div class="psb-b-button">
+              <a
+                class="psb-btn psb-btn-banner psb-btn-banner-outline {% if section.settings.enable_radius == true %} psb-btn-rounded {% endif %}"
+                href="{{section.settings.linkurl}}"
+              >
+                {{- section.settings.linktitle -}}
+              </a>
+            </div>
+            <div class="psb-b-bold">
+              <b>{{ section.settings.subdesc }}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="psb-col-md-6">
+        <div class="banner__media">
+          <div class="color-{{ section.settings.color_scheme }} global-media-settings {% if section.settings.image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}">
+            {%- if section.settings.image != blank -%}
+              <img
+                src="{{ section.settings.image  | img_url: 'master' }}"
+                alt="{{ section.settings.image.alt }}"
+                sizes="100%"
+                loading="lazy"
+              >
+            {%- else -%}
+              <img
+                src="https://cdn.shopify.com/s/files/1/0663/5887/0235/files/74651-chronograph-watch-baselworld-speake-marin-j12-chanel.png?v=1668095657"
+                alt="Placeholder image"
+                sizes="100%"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "⚡︎PSB: Banner 06",
+  "tag": "section",
+  "class": "banner-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "💡 Tips: Adjust padding to vertical align content"
+    },
+    {
+      "type": "select",
+      "id": "container_width",
+      "options": [
+        {
+          "value": "psb-container",
+          "label": "Container"
+        },
+        {
+          "value": "psb-container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "psb-container-fullwidth",
+          "label": "Container Fullwidth"
+        }
+      ],
+      "default": "psb-container",
+      "label": "Container width"
+    },
+    {
+      "type": "header",
+      "content": "Main settings"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "div",
+          "label": "Div"
+        }
+      ],
+      "default": "h2",
+      "info": "Heading font size"
+    },
+    {
+      "type": "header",
+      "content": "Banner Style"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Tips: Use transparent png image for best effect"
+    },
+    {
+      "type": "header",
+      "content": "Content & style"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Watches"
+    },
+    {
+      "type": "text",
+      "id": "desc",
+      "label": "Description",
+      "default": "Your watch and strap should go together perfectly, but that doesn't mean you can't experiment with different combinations, creativity is endless."
+    },
+    {
+      "type": "text",
+      "id": "subdesc",
+      "label": "Sub Description",
+      "default": "Discount 50% until November"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Main Heading Color",
+      "default": "#024E81"
+    },
+    {
+      "type": "color",
+      "id": "color_desc",
+      "label": "Description Text Color",
+      "default": "#024E81"
+    },
+    {
+      "type": "color",
+      "id": "color_subdesc",
+      "label": "Sub description Text Color",
+      "default": "#024E81"
+    },
+    {
+      "type": "header",
+      "content": "Button Text & Style"
+    },
+    {
+      "type": "text",
+      "id": "linktitle",
+      "label": "Button Text",
+      "default": "Buy now"
+    },
+    {
+      "type": "url",
+      "id": "linkurl",
+      "label": "Button Url"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_radius",
+      "label": "Enable border radius",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "button-text",
+      "label": "Button Color",
+      "default": "#024E81"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Wave Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "wave_color_1",
+      "label": "Line color",
+      "default": "#024E81"
+    },
+    {
+      "type": "color",
+      "id": "wave_color_2",
+      "label": "Top color",
+      "default": "#DEEEF9"
+    },
+    {
+      "type": "color",
+      "id": "wave_color_3",
+      "label": "Bottom color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Section Background Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#C7E5FA"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding-top",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding-bottom",
+      "default": 220
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_mobile",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding-top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_mobile",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding-bottom",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡︎PSB: Banner 06"
+    }
+  ]
+}
+{% endschema %}

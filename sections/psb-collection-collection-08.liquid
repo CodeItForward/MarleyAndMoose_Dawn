@@ -1,0 +1,975 @@
+{%- comment -%}
+  {
+    "name": "Collection 08",
+    "author": "PusherCommerce"
+    "description": "Please DO NOT copy in any form. Any act of copying will be sued and held responsible with the law"
+    "Semiwrite": "Yes",
+  }
+{%- endcomment -%}
+
+{% comment %}
+  Custom padding for keep layout mobile.
+  Note that: 12 + 3 = 15 ( 15 is orignal padding of Bootstrap)
+{% endcomment %}
+
+{% comment %} For desktop  {% endcomment %}
+{% assign custom_row_padding_desktop = 10 %}
+{% assign custom_column_padding_desktop = 15 | minus: custom_row_padding_desktop %}
+{% assign custom_gutter_desktop = custom_column_padding_desktop %}
+
+{% comment %} For mobile {% endcomment %}
+{% assign custom_row_padding = 12 %}
+{% assign custom_column_padding = 15 | minus: custom_row_padding %}
+{% assign custom_gutter = custom_column_padding %}
+
+{%- capture minify -%}
+  {% comment %}
+    For Heading, Subheading, Button, Divider
+  {% endcomment %}
+  <style>
+    #psb-{{ section.id }} .psb-utilities-heading__heading,
+    #psb-{{ section.id }} .psb-utilities-heading__subheading,
+    #psb-{{ section.id }} .psb-btn-wrapper {
+      text-align: {{ section.settings.text_align_mobile }};
+    }
+
+    #psb-{{ section.id }} .psb-divider-wrapper {
+      display: flex;
+      justify-content: {{ section.settings.text_align_mobile }};
+      align-items: center;
+    }
+
+    #psb-{{ section.id }} .psb-utilities-heading__heading {
+      color: var(--heading-color);
+    }
+
+    #psb-{{ section.id }} .psb-utilities-heading__subheading {
+      color: var(--subheading-color);
+    }
+
+    #psb-{{ section.id }} .psb-divider {
+      display: inline-block;
+      width: 120px;
+      height: 4px;
+      background-color: var(--divider-color);
+    }
+
+
+    @media (min-width: 768px) {
+      #psb-{{ section.id }} .psb-utilities-heading__heading,
+      #psb-{{ section.id }} .psb-utilities-heading__subheading,
+      #psb-{{ section.id }} .psb-btn-wrapper {
+        text-align: {{ section.settings.text_align }};
+      }
+
+      #psb-{{ section.id }} .psb-divider-wrapper {
+        justify-content: {{ section.settings.text_align }};
+      }
+
+      #psb-{{ section.id }} .psb-divider {
+        width: 185px;
+      }
+    }
+  </style>
+
+  {% comment %} Section style  {% endcomment %}
+  <style>
+    #psb-{{ section.id }} {
+      color: {{ section.settings.text_color }};
+      background-color: {{ section.settings.background_color }};
+      padding-top: {{ section.settings.section_padding_top }}px;
+      padding-bottom: {{ section.settings.section_padding_bottom }}px;
+      line-height: 1.5;
+    }
+
+    #psb-{{ section.id }} .psb-row {
+      padding-left: {{ custom_row_padding_desktop }}px;
+      padding-right: {{ custom_row_padding_desktop }}px;
+    }
+
+    #psb-{{ section.id }} .psb-row .image-column {
+      position: relative;
+      padding-left: {{ custom_column_padding_desktop }}px;
+      padding-right: {{ custom_column_padding_desktop }}px;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper {
+      margin-bottom: calc( {{ custom_gutter_desktop }}px * 2 );
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper[data-index="2"] {
+      padding-top: calc(50% - {{ custom_gutter_desktop }}px);
+    }
+
+    #psb-{{ section.id }} img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper {
+      display: block;
+      position: relative;
+      height: auto;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper[data-index="1"] {
+      padding-top: 100%;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper[data-index="3"] {
+      padding-top: 100%;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper[data-index="4"] {
+      padding-top: 100%;
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    #psb-{{ section.id }} .psb-img-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      transition: transform 0.25s;
+    }
+
+    #psb-{{ section.id }} .psb-img__title {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 60px;
+      text-align: left;
+      color: {{ section.settings.collection_title_color }};
+      width: 100%;
+    }
+
+    #psb-{{ section.id }} .image-column.image-column--3 .psb-img__title,
+    #psb-{{ section.id }} .image-column.image-column--4 .psb-img__title {
+      padding: 30px;
+    }
+
+    #psb-{{ section.id }} .psb-img__overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: {{ section.settings.overlay_opacity | times: 1.0 | divided_by: 100 }} ;
+    }
+
+    @media only screen and (max-width: 767px) {
+      #psb-{{ section.id }} {
+        padding-top: {{ section.settings.section_padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.section_padding_bottom_mobile }}px;
+      }
+      #psb-{{ section.id }} .psb-img-wrapper[data-index="2"] {
+        padding-top: 100%;
+      }
+
+      #psb-{{ section.id }} .image-column.image-column--3 {
+        padding-right: {{ custom_gutter }}px;
+      }
+
+      #psb-{{ section.id }} .image-column.image-column--4 {
+        padding-left: {{ custom_gutter }}px;
+      }
+
+      #psb-{{ section.id }} .psb-img-wrapper {
+        margin-bottom: calc( {{ custom_gutter }}px * 2 );
+      }
+
+      #psb-{{ section.id }} .psb-img-wrapper[data-index="2"] {
+        padding-top: calc(50% - {{ custom_gutter }}px);
+      }
+
+      #psb-{{ section.id }} .psb-img-wrapper[data-index="3"] {
+        padding-top: 100%;
+      }
+
+      #psb-{{ section.id }} .psb-img-wrapper[data-index="4"] {
+        padding-top: 100%;
+      }
+
+      #psb-{{ section.id }} .psb-img__title {
+        padding: 30px;
+      }
+    }
+  </style>
+{%- endcapture -%}
+{{ minify | strip_newlines }}
+
+<div id="psb-{{ section.id }}" class="psb-{{ section.id }} psb-section psb-collection-collection-08" style="display: none;">
+  <div class="{{ section.settings.container_width }}">
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {%- when 'collection' -%}
+          {% liquid
+            if block.settings.link_to_1 != blank
+              assign wrapper_1 = 'a'
+            else
+              assign wrapper_1 = 'div'
+            endif
+
+            if block.settings.link_to_2 != blank
+              assign wrapper_2 = 'a'
+            else
+              assign wrapper_2 = 'div'
+            endif
+
+            if block.settings.link_to_3 != blank
+              assign wrapper_3 = 'a'
+            else
+              assign wrapper_3 = 'div'
+            endif
+
+            if block.settings.link_to_4 != blank
+              assign wrapper_4 = 'a'
+            else
+              assign wrapper_4 = 'div'
+            endif
+          %}
+          <div class="psb-row psb-block-space{% if block.settings.enable_reverse %} psb-flex-row-reverse{% endif %}" {{ block.shopify_attributes }}>
+            <div class="psb-col-lg-6 image-column">
+              <{{ wrapper_1 }}
+                {%- if wrapper_1 == 'a' -%}
+                  href="{{ block.settings.link_to_1 }}"
+                {%- endif -%}
+                class="psb-img-wrapper"
+                data-index="1"
+              >
+                {% if block.settings.background_image_1 == blank %}
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0663/5887/0235/files/studded-flats_1000x.jpg"
+                    alt="Placeholder image"
+                    width="1500"
+                    height="1500"
+                    loading="lazy"
+                  >
+                {% else %}
+                  {{ block.settings.background_image_1 | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+                {% endif %}
+                <div class="psb-img__overlay"></div>
+                <{{ block.settings.collection_heading_tag_1 }} class="psb-img__title psb-rte">
+                  {{ block.settings.heading_1 }}
+                </{{ block.settings.collection_heading_tag_1 }}>
+              </{{ wrapper_1 }}>
+            </div>
+            <div class="psb-col-lg-6 image-column">
+              <{{ wrapper_2 }}
+                {%- if wrapper_2 == 'a' -%}
+                  href="{{ block.settings.link_to_2 }}"
+                {%- endif -%}
+                class="psb-img-wrapper"
+                data-index="2"
+              >
+                {% if block.settings.background_image_2 == blank %}
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0663/5887/0235/files/boots-on-blue_600x.jpg"
+                    alt="Placeholder image"
+                    width="1500"
+                    height="1500"
+                    loading="lazy"
+                  >
+                {% else %}
+                  {{ block.settings.background_image_2 | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+                {% endif %}
+                <div class="psb-img__overlay"></div>
+                <{{ block.settings.collection_heading_tag_2 }} class="psb-img__title psb-rte">
+                  {{ block.settings.heading_2 }}
+                </{{ block.settings.collection_heading_tag_2 }}>
+              </{{ wrapper_2 }}>
+              <div class="psb-row">
+                <div class="psb-col-6 image-column image-column--3">
+                  <{{ wrapper_3 }}
+                    {%- if wrapper_3 == 'a' -%}
+                      href="{{ block.settings.link_to_3 }}"
+                    {%- endif -%}
+                    class="psb-img-wrapper"
+                    data-index="3"
+                  >
+                    {% if block.settings.background_image_3 == blank %}
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0663/5887/0235/files/big-smiles-and-happy-woman_500x.jpg"
+                        alt="Placeholder image"
+                        width="1500"
+                        height="1500"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      {{ block.settings.background_image_3 | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+                    {% endif %}
+                    <div class="psb-img__overlay"></div>
+                  </{{ wrapper_3 }}>
+                  <{{ block.settings.collection_heading_tag_3 }} class="psb-img__title psb-rte">
+                    {{ block.settings.heading_3 }}
+                  </{{ block.settings.collection_heading_tag_3 }}>
+                </div>
+                <div class="psb-col-6 image-column image-column--4">
+                  <{{ wrapper_4 }}
+                    {%- if wrapper_4 == 'a' -%}
+                      href="{{ block.settings.link_to_4 }}"
+                    {%- endif -%}
+                    class="psb-img-wrapper"
+                    data-index="4"
+                  >
+                    {% if block.settings.background_image_4 == blank %}
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0663/5887/0235/files/model-in-heels-and-overalls-with-blue_500x.jpg"
+                        alt="Placeholder image"
+                        width="1500"
+                        height="1500"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      {{ block.settings.background_image_4 | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+                    {% endif %}
+                    <div class="psb-img__overlay"></div>
+                  </{{ wrapper_4 }}>
+                  <{{ block.settings.collection_heading_tag_4 }} class="psb-img__title psb-rte">
+                    {{ block.settings.heading_4 }}
+                  </{{ block.settings.collection_heading_tag_4 }}>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- when 'heading' -%}
+          <{{ block.settings.heading_tag }}
+            class="psb-utilities-heading__heading psb-rte psb-block-space"
+            style="--heading-color: {{ block.settings.heading_color }}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.heading }}
+          </{{ block.settings.heading_tag }}>
+        {%- when 'subheading' -%}
+          <div
+            class="psb-utilities-heading__subheading psb-rte psb-block-space"
+            style="--subheading-color: {{ block.settings.subheading_color }}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.subheading }}
+          </div>
+        {% when 'divider' %}
+          <div class="psb-divider-wrapper psb-block-space">
+            <span class="psb-divider" style="--divider-color: {{ block.settings.divider_color }}" {{ block.shopify_attributes }}></span>
+          </div>
+        {% when 'buttons' %}
+          <div class="psb-btn-wrapper psb-block-space" {{ block.shopify_attributes }}>
+            <div class="psb-btn-group{% if block.settings.button_label_2 != blank %} psb-btn-group--two-btn{% endif %}">
+              {% if block.settings.button_label_1 != blank %}
+                <a
+                  href="{{ block.settings.button_link_1 }}"
+                  class="psb-btn{% if block.settings.button_is_rounded == true %} psb-btn-rounded{% endif %}{% if block.settings.button_is_outline == true %} psb-btn-outline{% endif %}"
+                  style="
+                    color: {{ block.settings.btn_color_1 }};
+                    {% if block.settings.button_is_outline == true %}
+                      background-color: transparent;
+                      border: 2px solid {{ block.settings.btn_color_1 }};
+                    {% else %}
+                      background-color: {{ block.settings.btn_bg_1 }};
+                    {% endif %}
+                  "
+                >
+                  {{ block.settings.button_label_1 }}
+                </a>
+              {% endif %}
+              {% if block.settings.button_label_2 != blank %}
+                <a
+                  href="{{ block.settings.button_link_2 }}"
+                  class="psb-btn{% if block.settings.button_is_rounded == true %} psb-btn-rounded{% endif %}{% if block.settings.button_is_outline == true %} psb-btn-outline{% endif %}"
+                  style="
+                    color: {{ block.settings.btn_color_2 }};
+                    {% if block.settings.button_is_outline == true %}
+                      background-color: transparent;
+                      border: 2px solid {{ block.settings.btn_color_2 }};
+                    {% else %}
+                      background-color: {{ block.settings.btn_bg_2 }};
+                    {% endif %}
+                  "
+                >
+                  {{ block.settings.button_label_2 }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "⚡︎PSB: Collection 08",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "💡 Tips: If you don't select collections, this section can act as a Navigation section, by choosing an alternative image, url, title... and linking to any page you want"
+    },
+    {
+      "type": "select",
+      "id": "container_width",
+      "options": [
+        {
+          "value": "psb-container",
+          "label": "Container"
+        },
+        {
+          "value": "psb-container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "psb-container-fullwidth",
+          "label": "Container Fullwidth"
+        }
+      ],
+      "default": "psb-container",
+      "label": "Container width"
+    },
+    {
+      "type": "header",
+      "content": "Main settings"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "collection_title_color",
+      "label": "Collection title color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text align",
+      "info": "On Desktop"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding-top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding-bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text align",
+      "info": "On Mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_mobile",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding-top",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_mobile",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding-bottom",
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection gallery",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_reverse",
+          "default": false,
+          "label": "Enable reverse layout"
+        },
+        {
+          "type": "header",
+          "content": "Collection 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link_to_1",
+          "label": "Image 1 | Link to"
+        },
+        {
+          "type": "richtext",
+          "id": "heading_1",
+          "default": "<p>Talk about your brand</p>",
+          "label": "Collection title"
+        },
+        {
+          "type": "select",
+          "id": "collection_heading_tag_1",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "Div"
+            }
+          ],
+          "default": "h2",
+          "label": "Collection title size"
+        },
+        {
+          "type": "header",
+          "content": "Collection 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "link_to_2",
+          "label": "Image 2 | Link to"
+        },
+        {
+          "type": "richtext",
+          "id": "heading_2",
+          "default": "<p>Talk about your brand</p>",
+          "label": "Collection title"
+        },
+        {
+          "type": "select",
+          "id": "collection_heading_tag_2",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "Div"
+            }
+          ],
+          "default": "h3",
+          "label": "Collection title size"
+        },
+        {
+          "type": "header",
+          "content": "Collection 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_3",
+          "label": "Image 3"
+        },
+        {
+          "type": "url",
+          "id": "link_to_3",
+          "label": "Image 3 | Link to"
+        },
+        {
+          "type": "richtext",
+          "id": "heading_3",
+          "default": "<p>Talk about your brand</p>",
+          "label": "Collection title"
+        },
+        {
+          "type": "select",
+          "id": "collection_heading_tag_3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "Div"
+            }
+          ],
+          "default": "h4",
+          "label": "Collection title size"
+        },
+        {
+          "type": "header",
+          "content": "Collection 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_4",
+          "label": "Image 4"
+        },
+        {
+          "type": "url",
+          "id": "link_to_4",
+          "label": "Image 4 | Link to"
+        },
+        {
+          "type": "richtext",
+          "id": "heading_4",
+          "default": "<p>Talk about your brand</p>",
+          "label": "Collection title"
+        },
+        {
+          "type": "select",
+          "id": "collection_heading_tag_4",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "Div"
+            }
+          ],
+          "default": "h4",
+          "label": "Collection title size"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "default": "<p>Talk about your brand</p>",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "Div"
+            }
+          ],
+          "default": "h2",
+          "label": "Heading size"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color",
+          "default": "#000"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "Subheading"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading color",
+          "default": "#585454"
+        }
+      ]
+    },
+    {
+      "name": "Divider",
+      "type": "divider",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "divider_color",
+          "label": "Color",
+          "default": "#ff6303"
+        }
+      ]
+    },
+    {
+      "name": "Buttons",
+      "type": "buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "💡 Leave the button label blank if you want to hide the button"
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Button 1 label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "Button 1 link"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_1",
+          "label": "Button 1 background color",
+          "default": "#ff6303"
+        },
+        {
+          "type": "color",
+          "id": "btn_color_1",
+          "label": "Button 1 label color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Button 2 label"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Button 2 link"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_2",
+          "label": "Button 2 background color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "btn_color_2",
+          "label": "Button 2 label color",
+          "default": "#111"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_is_rounded",
+          "default": false,
+          "label": "Rounded",
+          "info": "Rounded can be combined with Outline"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_is_outline",
+          "default": false,
+          "label": "Outline",
+          "info": "Use button label color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡︎PSB: Collection 08",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Outstanding Collections<\/p>"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "heading_1": "<p>Talk about your collection<\/p>",
+            "collection_heading_tag_1": "h2",
+            "heading_2": "<p>New Arrivals<\/p>",
+            "collection_heading_tag_2": "h3",
+            "heading_3": "<p>Sweaters<\/p>",
+            "collection_heading_tag_3": "h4",
+            "heading_4": "<p>Jackets<\/p>",
+            "collection_heading_tag_4": "h4"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
